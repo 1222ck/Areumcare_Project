@@ -1,0 +1,24 @@
+body {
+  background-color: #ededef;
+  width: 100%;
+}
+
+.title {
+  background-color: #f75248;
+  font-size: 21px;
+  font-weight: bold;
+  color: white;
+  padding: 15px 20px;
+  line-height: 28px;
+  border: 1px solid #d8362c;
+}
+
+.notice {
+  padding: 10px;
+  background-color: #fcf8e3;
+  border: 1px solid #fbeed5;
+}
+
+.container {
+  width: 100%;
+}

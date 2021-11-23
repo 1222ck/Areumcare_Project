@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+  <link rel="shortcut icon" href="/favicon-32.png">
+  <title> Areum Care 처방전 조회 </title>
+
+  <link rel="stylesheet" href="/css/Reset.css">
+  <link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+  <style>
+    .form-control {
+      font-size: 14px;
+      padding: 16px 20px;
+
+      color: #43434C;
+      border: 1px solid #DDDDDD;
+      border-radius: 4px;
+    }
+    .btn{
+      font-size: 14px;
+      font-weight: bold;
+
+      transition: 0.3s;
+    }
+    .btn:hover{
+      border-radius: 8px;
+    }
+  </style>
+</head>
+
+
+<body>
+  <div id="box1">
+
+    <div class="logo-box">
+      <img id="logo" src="/areum.png">
+    </div>
+
+    <div class="nav justify-content-center">
+        <!-- 방식은 post/ 서버에서 조회할때의 값을 바꾸려면 req.body.findId 부분을 req.body. 로 지정해주면댐 -->
+        <!-- 바꾸는 경우 index.ejs에서는 name="findId" 부분의 findId부분을 creq.body.findId 의 findId 와 같게 지정하기 -->
+        <div class="card-body text-primary">
+
+          <form action="/prescription" method="GET">
+            <ul class="input-area">
+              <li>
+                <!-- 입력창 만들기 qr코드 처방전 조회용 id 넣는 부분 -->
+                <input type="text" name="findId" placeholder=" 본인확인 ID를 입력하세요 " class="form-control" required /><br />
+              </li>
+              <li>
+                <input type="submit" value="처방전 조회하기" class="btn" />
+              </li>
+            </ul>
+          </form>
+
+        </div>
+    </div>
+    
+  </div>
+</body>
+
+<script src="/server.js"></script>
+</html>

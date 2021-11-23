@@ -1,0 +1,248 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+  <title> Areum Care '<%=prescription.patientName %>'님의 처방전 </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+</head>
+
+<body>
+  <!-- 처방전 화면 가운데 정렬하기 위함임 -->
+  <div
+    style="width: 2500px; height: 1000; position: absolute; left:40%; top:30%; margin-left: -475px; margin-top: -200px ;">
+    <table border="0" cellpadding="7" cellspacing="10" width="1220">
+      <!-- 상단의 슬로건 부분 테이블 색은 bgcolor=#4682B4에서 변경-->
+      <tr bgcolor=#4682B4>
+        <td>
+          <b>
+            <font size="2" color=#DCDCDC> 새로운 연결이, 건강에 스며들게 </font>
+            <br>
+            <font size="4" color="white"> + 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 𝐀𝐑𝐄𝐔𝐌𝐂𝐀𝐑𝐄 + </font>
+          </b>
+        </td>
+      </tr>
+
+      <br>
+      <!-- 반갑습니다 prescription.patientName 님과 같이
+          prescription. 같은 형식으로 지정하면 db의 prescription의 원하는 값 가져올 수 있음 -->
+      <tr>
+        <td>
+          <font size="2">
+            <br>
+            <!-- findId값을 기반으로 불러온 처방전의 환자이름 불러오기 -->
+            ✿ 반갑습니다 <%=prescription.patientName %> 님 발급된 회원님의 처방전 입니다.
+          </font>
+        </td>
+      </tr>
+    </table>
+    <br />
+  </div>
+
+
+  <!-- 처방전 테이블 생성함 -->
+  <form action="/" method="GET"> </form>
+
+  <div
+    style="width: 2500px; height: 1000; position: absolute; left:40%; top:50%; margin-left: -500px; margin-top: -200px ;">
+    <ul class="prescription">
+      <!-- if(prescription.IsUser) { %>
+        이 함수를 통해 server.js 에서 (result.findId === req.body.findId) 일때 result.IsUser = true라고 한 부분이
+        이 밑 부분에서 실행됨 ( }를 닫을때까지 )
+        아랫부분은 모두 테이블 안에 값을 집어넣는 함수임-->
+      <% if(prescription.IsUser) { %>
+
+        <table border=0 cellpadding="4" cellspacing="0" width="1200">
+          <tr align=center>
+            <td align=center>
+              <font size="5">
+                <전자 처방전>
+            </td>
+          </tr>
+        </table>
+
+        <form name="form" action="" method="get">
+          <basefont size="2">
+          <table border="1" cellpadding="4" cellspacing="0" width="1200">
+            
+            <!-- 1행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  교부일자  </th>
+              <td style="text-align: center">
+                <%= prescription.issueDate %>
+              </td>
+
+              <th bgcolor="#F0F8FF">  교부번호  </th>
+              <td style="text-align: center">
+                <%= prescription.issueDate %>
+              </td>
+
+              <th bgcolor="#F0F8FF">  의약품 처방 여부  </th>
+            </tr>
+
+            <!-- 2행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  환자 성명 </th>
+              <td style="text-align: center">
+                <%= prescription.patientName %>
+              </td>
+              
+              <th bgcolor="#F0F8FF" width="130">  주민등록번호  </th>
+              <td style="text-align: center">
+                <%= prescription.residentRegistrationNumber %>
+              </td>
+              <td style="text-align: center"> 미완료  </td>
+            </tr>
+
+            <!-- 3행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  의료기관 명칭 </th>
+              <td style="text-align: center">
+                <%= prescription.hospitalName %>
+              </td>
+
+              <th bgcolor="#F0F8FF" width="150">  의료기관 전화번호 </th>
+              <td style="text-align: center">
+                <%= prescription.hospitalPhoneNumber %>
+              </td>
+
+              <th bgcolor="#F0F8FF" width="150">  면허종별  </th>
+            </tr>
+
+            <!-- 4행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  의료기관 팩스번호 </th>
+              <td style="text-align: center">
+                <%= prescription.faxNumber %>
+              </td>
+              
+              <th bgcolor="#F0F8FF" width="130">  의료기관 email  </th>
+              <td style="text-align: center">
+                <%= prescription.email%>
+              </td>
+              <td style="text-align: center"> 의사  </td>
+            </tr>
+
+            <tr>
+              <td colspan="10">
+                ** 환자의 요구가 있는 때에는 질병분류기호를 기재하지 아니합니다.
+              </td>
+            </tr>
+            <!-- 이런식으로 th만 따로 넣고 td를 따로 넣은 이유는 테이블에서 이름 | 이아름 처럼 옆으로 정렬되는 것이 아닌
+          밑으로 이름
+                이아름 형식으로 칸이 들어가게끔 넣음  -->
+            <!-- 5행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  처방의약품 명칭 </th>
+              <th bgcolor="#F0F8FF">  1회 투약량  </th>
+              <th bgcolor="#F0F8FF">  1회 투여횟수  </th>
+              <th bgcolor="#F0F8FF">  총 투약일수 </th>
+              <th bgcolor="#F0F8FF">  용법  </th>
+            </tr>
+
+            <tr>
+              <td style="text-align: center">
+                <%= prescription.prescriptionDrug%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.prescriptionDosage%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.prescriptionFrequency%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.prescriptionDays%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.prescriptionUsage%>
+              </td>
+            </tr>
+
+            <!-- 6행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  주사제 처방내역 </th>
+              <th bgcolor="#F0F8FF">  주사제 투약량 </th>
+              <th bgcolor="#F0F8FF">  주사제 투여횟수 </th>
+              <th bgcolor="#F0F8FF">  총 투약일수 </th>
+              <th bgcolor="#F0F8FF">  조제시 참고사항 </th>
+            </tr>
+
+            <tr>
+              <td style="text-align: center">
+                <%= prescription.injection%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.injectionDosage%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.injectionFrequency%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.injectionDays%>
+              </td>
+              <td style="text-align: center">
+                <%= prescription.injectionUsage%>
+              </td>
+            </tr>
+
+            <!-- 7행 -->
+            <tr>
+              <td colspan="10">
+                ** 처방전 사용기간은 교부일로 부터 (<%= prescription.periodOfUse%>) 일간
+              </td>
+            </tr>
+
+            <tr>
+              <td colspan="10">
+                ** 사용기간 내에 약국에 제출하여야 합니다.
+              </td>
+            </tr>
+
+            <!-- 8행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  주사제 처방내역 </th>
+              <td colspan=100%>
+                <%= prescription.injection%>
+              </td>
+            </tr>
+
+            <!-- 9행 -->
+            <tr>
+              <th bgcolor="#F0F8FF">  메 모 </th>
+              <td colspan=100%>
+                <%= prescription.memo%>
+              </td>
+            </tr>
+
+            <!-- 추후에 등록 취소 버튼 추가시 사용 -->
+            <!-- <tr>
+        <td colspan="4" align="center">
+            <input type="submit" value="등  록" />
+            <input type="reset" value="취  소" />
+        </td>
+    
+      </tr> -->
+          </table>
+        </form>
+
+        <%}%>
+          <% if(!prescription.IsUser) { %>
+            <li>  유저없음  </li>
+            <%}%>
+    </ul>
+  </div>
+
+  <table width="1200">
+    <% if(qrUrl !='' ) { %>
+      <div class="text-center "
+        style="width: 2500px; height: 1000; position: absolute; left:80%; top:120%; margin-left: -475px; margin-top: -200px ;">
+        <h5>  처방전 QR Code  </h5>
+        <img src="<%=qrUrl%>" alt="" style="width: 100px; height: 100px" />
+      </div>
+      <%}%>
+  </table>
+
+</body>
+</html>
